@@ -25,10 +25,10 @@ Two types of strategies are tested:
  
 # Random Match Maker 
 
-Randomly pick player to create a team.
+Randomly pick players to create a team.
 
 # SkillLevelEstimer: Basic Win Count
-Add 1 to the estimated skill level when winning.
+Add 1 to the estimated skill level of the player when its team win the game.
 Remove 1 when losing.
 
 # First results
