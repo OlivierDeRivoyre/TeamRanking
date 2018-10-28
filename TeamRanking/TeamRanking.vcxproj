@@ -143,28 +143,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Census.h" />
-    <ClInclude Include="EstimatedRank.h" />
+    <ClInclude Include="EstimatedSkillLevel.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="IMatchMaker.h" />
-    <ClInclude Include="IRankEstimater.h" />
+    <ClInclude Include="ISkillEstimater.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Rank.h" />
+    <ClInclude Include="SkillLevel.h" />
     <ClInclude Include="Round.h" />
     <ClInclude Include="ScoreChecker.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="StupidMatchMaker.h" />
-    <ClInclude Include="StupidRankEstimer.h" />
+    <ClInclude Include="RandomMatchMaker.h" />
+    <ClInclude Include="WinCountSkillEstimater.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Team.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Census.cpp" />
-    <ClCompile Include="EstimatedRank.cpp" />
+    <ClCompile Include="EstimatedSkillLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="IMatchMaker.cpp" />
-    <ClCompile Include="IRankEstimater.cpp" />
+    <ClCompile Include="ISkillEstimater.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Rank.cpp" />
+    <ClCompile Include="SkillLevel.cpp" />
     <ClCompile Include="Round.cpp" />
     <ClCompile Include="ScoreChecker.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -173,8 +173,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="StupidMatchMaker.cpp" />
-    <ClCompile Include="StupidRankEstimer.cpp" />
+    <ClCompile Include="RandomMatchMaker.cpp" />
+    <ClCompile Include="WinCountSkillEstimater.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>

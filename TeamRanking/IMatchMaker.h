@@ -4,6 +4,6 @@ class IMatchMaker
 public:
 	IMatchMaker();
 	~IMatchMaker();
-	virtual void CreateMatches(Census& census, Round& round) = 0;
+	virtual void createGames(Census& census, Round& round) = 0;
 };
 

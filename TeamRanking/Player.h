@@ -5,11 +5,11 @@ class Player
 public:
 	Player(int id);
 	~Player();
-	EstimatedRank& getEstimatedRank() { return _estimatedRank; }
+	EstimatedSkillLevel& getEstimatedSkillLevel() { return _estimatedSkillLevel; }
 	int playGame();
 private:
 	int _id;
-	Rank _rank;
-	EstimatedRank _estimatedRank;
+	SkillLevel _rank;
+	EstimatedSkillLevel _estimatedSkillLevel;
 };
 

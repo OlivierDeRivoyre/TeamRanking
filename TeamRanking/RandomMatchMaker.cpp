@@ -1,17 +1,17 @@
 #include "stdafx.h"
-#include "StupidMatchMaker.h"
+#include "RandomMatchMaker.h"
 
 
-StupidMatchMaker::StupidMatchMaker()
+RandomMatchMaker::RandomMatchMaker()
 {
 }
 
 
-StupidMatchMaker::~StupidMatchMaker()
+RandomMatchMaker::~RandomMatchMaker()
 {
 }
 
-void StupidMatchMaker::CreateMatches(Census& census, Round& round) {
+void RandomMatchMaker::createGames(Census& census, Round& round) {
 	vector<Player*> players = census.getAllPlayers();
 	// Mix players
 	for (unsigned int i = 0; i < players.size(); i++)

@@ -1,9 +1,9 @@
 #pragma once
-class Rank
+class SkillLevel
 {
 public:
-	Rank();
-	~Rank();
+	SkillLevel();
+	~SkillLevel();
 	int getScore() { return _score; }
 private:
 	int _score;

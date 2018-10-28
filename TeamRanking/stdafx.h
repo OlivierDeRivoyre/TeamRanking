@@ -13,8 +13,8 @@
 #include <vector>
 using namespace std;
 
-#include "Rank.h"
-#include "EstimatedRank.h"
+#include "SkillLevel.h"
+#include "EstimatedSkillLevel.h"
 #include "Player.h"
 #include "Team.h"
 #include "Census.h"
@@ -22,11 +22,11 @@ using namespace std;
 #include "Round.h"
 
 #include "IMatchMaker.h"
-#include "IRankEstimater.h"
+#include "ISkillEstimater.h"
 #include "ScoreChecker.h"
 
-#include "StupidMatchMaker.h"
-#include "StupidRankEstimer.h"
+#include "RandomMatchMaker.h"
+#include "WinCountSkillEstimater.h"
 
 
 // TODO: reference additional headers your program requires here

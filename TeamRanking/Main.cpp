@@ -1,17 +1,14 @@
-// TeamRanking.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
+#include <iomanip>
 
-
-void EvaluateAlgos(IMatchMaker& matchMaker, IRankEstimater& rankEstimer) 
+void evaluateAlgos(IMatchMaker& matchMaker, ISkillEstimater& rankEstimer) 
 {
 	Census census = Census(100);
 	for (unsigned int i = 0; i < 20; i++) 
 	{
 		Round round = Round(&census, i);
-		matchMaker.CreateMatches(census, round);		
-		rankEstimer.adjustEstimatedRanks(round);
+		matchMaker.createGames(census, round);		
+		rankEstimer.adjustEstimatedSkillLevels(round);
 	}
 	float correctness = ScoreChecker().computePronostic(census);
 	cout << "Correctness: " << correctness << endl;
@@ -19,9 +16,10 @@ void EvaluateAlgos(IMatchMaker& matchMaker, IRankEstimater& rankEstimer)
 
 int main()
 {
+	srand((unsigned int) std::time(NULL));
 	std::cout << "Hello" << std::endl;	
 
-	EvaluateAlgos(StupidMatchMaker(), StupidRankEstimer());
+	evaluateAlgos(RandomMatchMaker(), WinCountSkillEstimater());
 
 
 

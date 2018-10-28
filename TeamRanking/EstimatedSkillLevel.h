@@ -1,9 +1,9 @@
 #pragma once
-class EstimatedRank
+class EstimatedSkillLevel
 {
 public:
-	EstimatedRank();
-	~EstimatedRank();
+	EstimatedSkillLevel();
+	~EstimatedSkillLevel();
 	void increment(int incr) { _score += incr; }
 	int getScore() { return _score; }
 private:
