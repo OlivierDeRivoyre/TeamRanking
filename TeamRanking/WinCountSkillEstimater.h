@@ -4,6 +4,6 @@ class WinCountSkillEstimater : public ISkillEstimater
 public:
 	WinCountSkillEstimater();
 	~WinCountSkillEstimater();
-	void adjustEstimatedSkillLevels(Game& game, bool team1Win);
+	void adjustEstimatedSkillLevels(Game& game, bool team1Win) override;
 };
 

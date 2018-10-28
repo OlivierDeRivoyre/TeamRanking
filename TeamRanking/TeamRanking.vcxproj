@@ -148,6 +148,7 @@
     <ClInclude Include="IMatchMaker.h" />
     <ClInclude Include="ISkillEstimater.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SkillBasedMatchMacker.h" />
     <ClInclude Include="SkillLevel.h" />
     <ClInclude Include="Round.h" />
     <ClInclude Include="EstimationChecker.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="IMatchMaker.cpp" />
     <ClCompile Include="ISkillEstimater.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SkillBasedMatchMacker.cpp" />
     <ClCompile Include="SkillLevel.cpp" />
     <ClCompile Include="Round.cpp" />
     <ClCompile Include="EstimationChecker.cpp" />

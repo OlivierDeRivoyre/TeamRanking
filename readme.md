@@ -48,15 +48,46 @@ At 20 rounds, the accuracy seem to be the same whatever the number of players ar
 
 ~~~
 Test influence of round count with Random+WinCount
-Random+WinCount nbPlayers: 100  nbRounds: 1     accuracy: 58%   standardDeviation: 2.2
-Random+WinCount nbPlayers: 100  nbRounds: 2     accuracy: 62%   standardDeviation: 1.6
-Random+WinCount nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.8
-Random+WinCount nbPlayers: 100  nbRounds: 10    accuracy: 73%   standardDeviation: 1.5
-Random+WinCount nbPlayers: 100  nbRounds: 15    accuracy: 76%   standardDeviation: 2.2
-Random+WinCount nbPlayers: 100  nbRounds: 25    accuracy: 79%   standardDeviation: 1.8
-Random+WinCount nbPlayers: 100  nbRounds: 50    accuracy: 85%   standardDeviation: 1.6
-Random+WinCount nbPlayers: 100  nbRounds: 100   accuracy: 88%   standardDeviation: 1.7
-Random+WinCount nbPlayers: 100  nbRounds: 200   accuracy: 92%   standardDeviation: 1.1
-Random+WinCount nbPlayers: 100  nbRounds: 400   accuracy: 94%   standardDeviation: 0.8
+Random+WinCount nbPlayers: 100  nbRounds: 1     accuracy: 58%   standardDeviation: 2.0
+Random+WinCount nbPlayers: 100  nbRounds: 2     accuracy: 61%   standardDeviation: 2.3
+Random+WinCount nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.7
+Random+WinCount nbPlayers: 100  nbRounds: 10    accuracy: 71%   standardDeviation: 2.2
+Random+WinCount nbPlayers: 100  nbRounds: 15    accuracy: 75%   standardDeviation: 2.2
+Random+WinCount nbPlayers: 100  nbRounds: 25    accuracy: 80%   standardDeviation: 1.9
+Random+WinCount nbPlayers: 100  nbRounds: 50    accuracy: 84%   standardDeviation: 1.1
+Random+WinCount nbPlayers: 100  nbRounds: 75    accuracy: 87%   standardDeviation: 1.5
+Random+WinCount nbPlayers: 100  nbRounds: 100   accuracy: 89%   standardDeviation: 0.8
+Random+WinCount nbPlayers: 100  nbRounds: 150   accuracy: 91%   standardDeviation: 1.2
+Random+WinCount nbPlayers: 100  nbRounds: 200   accuracy: 92%   standardDeviation: 0.8
+Random+WinCount nbPlayers: 100  nbRounds: 300   accuracy: 93%   standardDeviation: 0.7
+Random+WinCount nbPlayers: 100  nbRounds: 500   accuracy: 95%   standardDeviation: 0.8
+Random+WinCount nbPlayers: 100  nbRounds: 900   accuracy: 96%   standardDeviation: 0.7
 ~~~
 The algo is slow to converge to good results. After a few rounds, we should add some intelligence to how we choose players.
+
+# Skill based match maker
+
+Instead of randomly picking players, we create games with players of the same estimated level. 
+The algorithm is to take the 10 worst players for the first game, then take the 10 worst players after them, and so on until 
+taking the best players.
+To do two balanced teams with 10 players, we take the 2 worst players and randomly set one in each team. It is not the best
+way to do it, it is a greedy heuristic to this bin packing problem.
+
+With this method we improve to have an accuracy of 90% at 50 rounds, instead of 84% previously with a random match making.
+~~~
+Test influence of round count with SkillBasedMatchMacker+WinCount
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 1     accuracy: 56%   standardDeviation: 2.2
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 2     accuracy: 62%   standardDeviation: 2.4
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.4
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 10    accuracy: 74%   standardDeviation: 1.8
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 15    accuracy: 79%   standardDeviation: 1.9
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 25    accuracy: 84%   standardDeviation: 1.6
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 50    accuracy: 90%   standardDeviation: 1.0
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 75    accuracy: 93%   standardDeviation: 1.0
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 100   accuracy: 93%   standardDeviation: 1.2
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 150   accuracy: 94%   standardDeviation: 0.8
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 200   accuracy: 95%   standardDeviation: 0.7
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 300   accuracy: 96%   standardDeviation: 0.6
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 500   accuracy: 96%   standardDeviation: 0.6
+SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 900   accuracy: 97%   standardDeviation: 0.8
+~~~

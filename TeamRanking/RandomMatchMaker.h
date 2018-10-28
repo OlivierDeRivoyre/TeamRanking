@@ -4,6 +4,6 @@ class RandomMatchMaker : public IMatchMaker
 public:
 	RandomMatchMaker();
 	~RandomMatchMaker();
-	void createGames(Census& census, Round& round);
+	void createGames(Census& census, Round& round) override;
 };
 

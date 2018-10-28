@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <iomanip>
-#undef FULL_RESULTS
+#define FULL_RESULTS
 
 float getAverage(vector<float> list)
 {
@@ -60,25 +60,27 @@ void testSizesInfluence(char configName[], IMatchMaker& matchMaker, ISkillEstima
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 10);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 15);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 25);
-#if(FULL_RESULTS)
+#if defined(FULL_RESULTS)
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 50);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 75);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 100);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 150);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 200);
-	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 400);
-	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 800);
-	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 1600);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 300);	
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 500);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 900);
 #endif
 
 	cout << "Test influence of players count with " << configName << endl;
 	evaluateAlgos(configName, matchMaker, rankEstimer, 50, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 200, 20);
-#if(FULL_RESULTS)
+#if defined(FULL_RESULTS)
 	evaluateAlgos(configName, matchMaker, rankEstimer, 400, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 1000, 20);	
 	evaluateAlgos(configName, matchMaker, rankEstimer, 2000, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 5000, 20);
-	evaluateAlgos(configName, matchMaker, rankEstimer, 10000, 20);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 9000, 20);
 #endif
 }
 
@@ -86,6 +88,9 @@ int main()
 {
 	srand((unsigned int) time(NULL));
 	
+	
+	testSizesInfluence("SkillBasedMatchMacker+WinCount", SkillBasedMatchMacker(), WinCountSkillEstimater());
+
 	testSizesInfluence("Random+WinCount", RandomMatchMaker(), WinCountSkillEstimater());
 	
 
