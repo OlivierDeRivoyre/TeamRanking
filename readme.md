@@ -10,6 +10,7 @@ I'm looking on how fast a player levels of a population of players can be determ
  - a game is a match between two teams.
  - the output of the game is only a win or a loss.
  - the player skill level does not change. The player does not progress.
+ - the skill player is a random number between 0 and 1000 in a normal distribution (result of 10 dices of 100). 
  - each player have a fixed skill level. The team wich has the bigger sum of score (=the better players) win. 
  - multiple games (i.e. match) can be played on one round, but a team can play only one game per round against another team.
  - A certain number of round is set (20 for example)
@@ -36,31 +37,26 @@ Remove 1 when losing.
 After 20 rounds of Random Match Maker with Basic Rank Increment, we have 77% accuracy.
 
 ~~~
-Random+WinCount nbPlayers: 50   nbRounds: 20    accuracy: 79%   standardDeviation: 1.9
-Random+WinCount nbPlayers: 100  nbRounds: 20    accuracy: 79%   standardDeviation: 1.1
-Random+WinCount nbPlayers: 200  nbRounds: 20    accuracy: 78%   standardDeviation: 0.9
-Random+WinCount nbPlayers: 400  nbRounds: 20    accuracy: 78%   standardDeviation: 0.6
-Random+WinCount nbPlayers: 1000 nbRounds: 20    accuracy: 78%   standardDeviation: 0.4
-Random+WinCount nbPlayers: 2000 nbRounds: 20    accuracy: 78%   standardDeviation: 0.3
-Random+WinCount nbPlayers: 4000 nbRounds: 20    accuracy: 78%   standardDeviation: 0.2
+Random+WinCount nbPlayers: 50   nbRounds: 20    accuracy: 79%   standardDeviation: 2.2
+Random+WinCount nbPlayers: 100  nbRounds: 20    accuracy: 79%   standardDeviation: 1.6
+Random+WinCount nbPlayers: 200  nbRounds: 20    accuracy: 78%   standardDeviation: 1.6
+Random+WinCount nbPlayers: 400  nbRounds: 20    accuracy: 77%   standardDeviation: 1.4
+Random+WinCount nbPlayers: 1000 nbRounds: 20    accuracy: 78%   standardDeviation: 1.3
 ~~~
-At 20 rounds, the accuracy seem to be the same whatever the number of players are
+At 20 rounds, the accuracy seem to be the same whatever the number of players are.
 
 
 ~~~
 Test influence of round count with Random+WinCount
-Random+WinCount nbPlayers: 100  nbRounds: 1     accuracy: 58%   standardDeviation: 3.0
-Random+WinCount nbPlayers: 100  nbRounds: 2     accuracy: 61%   standardDeviation: 1.7
-Random+WinCount nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.5
-Random+WinCount nbPlayers: 100  nbRounds: 10    accuracy: 72%   standardDeviation: 1.8
-Random+WinCount nbPlayers: 100  nbRounds: 15    accuracy: 76%   standardDeviation: 1.8
-Random+WinCount nbPlayers: 100  nbRounds: 25    accuracy: 81%   standardDeviation: 1.4
-Random+WinCount nbPlayers: 100  nbRounds: 50    accuracy: 85%   standardDeviation: 1.3
-Random+WinCount nbPlayers: 100  nbRounds: 100   accuracy: 89%   standardDeviation: 1.2
-Random+WinCount nbPlayers: 100  nbRounds: 200   accuracy: 92%   standardDeviation: 1.0
-Random+WinCount nbPlayers: 100  nbRounds: 400   accuracy: 94%   standardDeviation: 1.0
-Random+WinCount nbPlayers: 100  nbRounds: 1000  accuracy: 96%   standardDeviation: 0.5
-Random+WinCount nbPlayers: 100  nbRounds: 5000  accuracy: 98%   standardDeviation: 0.3
-Random+WinCount nbPlayers: 100  nbRounds: 10000 accuracy: 99%   standardDeviation: 0.3
+Random+WinCount nbPlayers: 100  nbRounds: 1     accuracy: 58%   standardDeviation: 2.2
+Random+WinCount nbPlayers: 100  nbRounds: 2     accuracy: 62%   standardDeviation: 1.6
+Random+WinCount nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.8
+Random+WinCount nbPlayers: 100  nbRounds: 10    accuracy: 73%   standardDeviation: 1.5
+Random+WinCount nbPlayers: 100  nbRounds: 15    accuracy: 76%   standardDeviation: 2.2
+Random+WinCount nbPlayers: 100  nbRounds: 25    accuracy: 79%   standardDeviation: 1.8
+Random+WinCount nbPlayers: 100  nbRounds: 50    accuracy: 85%   standardDeviation: 1.6
+Random+WinCount nbPlayers: 100  nbRounds: 100   accuracy: 88%   standardDeviation: 1.7
+Random+WinCount nbPlayers: 100  nbRounds: 200   accuracy: 92%   standardDeviation: 1.1
+Random+WinCount nbPlayers: 100  nbRounds: 400   accuracy: 94%   standardDeviation: 0.8
 ~~~
 The algo is slow to converge to good results. After a few rounds, we should add some intelligence to how we choose players.
