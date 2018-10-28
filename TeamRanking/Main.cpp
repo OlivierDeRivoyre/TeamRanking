@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <iomanip>
-
+#undef FULL_RESULTS
 
 float getAverage(vector<float> list)
 {
@@ -28,7 +28,7 @@ void evaluateAlgos(char configName[], IMatchMaker& matchMaker, ISkillEstimater& 
 	for (int test = 0; test < 20; test++)
 	{
 		Census census = Census(playersCount);
-		for (unsigned int i = 0; i < roundCount; i++)
+		for (int i = 0; i < roundCount; i++)
 		{
 			Round round = Round(&census, i);
 			matchMaker.createGames(census, round);
@@ -60,17 +60,26 @@ void testSizesInfluence(char configName[], IMatchMaker& matchMaker, ISkillEstima
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 10);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 15);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 25);
+#if(FULL_RESULTS)
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 50);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 100);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 200);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 400);
-	
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 800);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 1600);
+#endif
+
 	cout << "Test influence of players count with " << configName << endl;
 	evaluateAlgos(configName, matchMaker, rankEstimer, 50, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 200, 20);
+#if(FULL_RESULTS)
 	evaluateAlgos(configName, matchMaker, rankEstimer, 400, 20);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 1000, 20);	
+	evaluateAlgos(configName, matchMaker, rankEstimer, 2000, 20);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 5000, 20);
+	evaluateAlgos(configName, matchMaker, rankEstimer, 10000, 20);
+#endif
 }
 
 int main()
