@@ -60,9 +60,9 @@ void testSizesInfluence(char configName[], IMatchMaker& matchMaker, ISkillEstima
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 10);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 15);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 25);
-#if defined(FULL_RESULTS)
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 50);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 75);
+#if defined(FULL_RESULTS)
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 100);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 150);
 	evaluateAlgos(configName, matchMaker, rankEstimer, 100, 200);
@@ -88,10 +88,10 @@ int main()
 {
 	srand((unsigned int) time(NULL));
 	
-	
-	testSizesInfluence("SkillBasedMatchMacker+WinCount", SkillBasedMatchMacker(), WinCountSkillEstimater());
-
-	testSizesInfluence("Random+WinCount", RandomMatchMaker(), WinCountSkillEstimater());
+	testSizesInfluence("SkillBased-Weighted", SkillBasedMatchMacker(), WeightedSkillEstimater());
+	testSizesInfluence("SkillBased-WinCount", SkillBasedMatchMacker(), WinCountSkillEstimater());
+	testSizesInfluence("Random-Weighted", RandomMatchMaker(), WeightedSkillEstimater());
+	testSizesInfluence("Random-WinCount", RandomMatchMaker(), WinCountSkillEstimater());
 	
 
 	cout << "Press enter to exit..." << endl;

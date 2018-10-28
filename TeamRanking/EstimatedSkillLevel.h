@@ -4,9 +4,9 @@ class EstimatedSkillLevel
 public:
 	EstimatedSkillLevel();
 	~EstimatedSkillLevel();
-	void increment(int incr) { _score += incr; }
-	int getScore() { return _score; }
+	void increment(float incr) { _score += incr; }
+	float getScore() { return _score; }
 private:
-	int _score = 500;
+	float _score = 500;
 };
 

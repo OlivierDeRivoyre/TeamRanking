@@ -73,21 +73,68 @@ taking the best players.
 To do two balanced teams with 10 players, we take the 2 worst players and randomly set one in each team. It is not the best
 way to do it, it is a greedy heuristic to this bin packing problem.
 
-With this method we improve to have an accuracy of 90% at 50 rounds, instead of 84% previously with a random match making.
+With this method we improve to have an accuracy of 91% at 50 rounds, instead of 84% previously with a random match making.
 ~~~
-Test influence of round count with SkillBasedMatchMacker+WinCount
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 1     accuracy: 56%   standardDeviation: 2.2
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 2     accuracy: 62%   standardDeviation: 2.4
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.4
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 10    accuracy: 74%   standardDeviation: 1.8
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 15    accuracy: 79%   standardDeviation: 1.9
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 25    accuracy: 84%   standardDeviation: 1.6
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 50    accuracy: 90%   standardDeviation: 1.0
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 75    accuracy: 93%   standardDeviation: 1.0
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 100   accuracy: 93%   standardDeviation: 1.2
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 150   accuracy: 94%   standardDeviation: 0.8
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 200   accuracy: 95%   standardDeviation: 0.7
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 300   accuracy: 96%   standardDeviation: 0.6
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 500   accuracy: 96%   standardDeviation: 0.6
-SkillBasedMatchMacker+WinCount  nbPlayers: 100  nbRounds: 900   accuracy: 97%   standardDeviation: 0.8
+Test influence of round count with SkillBased-WinCount
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 1     accuracy: 58%   standardDeviation: 2.6
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 2     accuracy: 62%   standardDeviation: 2.4
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 5     accuracy: 67%   standardDeviation: 2.3
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 10    accuracy: 74%   standardDeviation: 2.6
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 15    accuracy: 79%   standardDeviation: 1.6
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 25    accuracy: 85%   standardDeviation: 2.0
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 50    accuracy: 91%   standardDeviation: 1.1
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 75    accuracy: 92%   standardDeviation: 0.9
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 100   accuracy: 94%   standardDeviation: 0.8
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 150   accuracy: 95%   standardDeviation: 0.7
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 200   accuracy: 95%   standardDeviation: 0.8
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 300   accuracy: 96%   standardDeviation: 0.7
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 500   accuracy: 97%   standardDeviation: 0.7
+SkillBased-WinCount     nbPlayers: 100  nbRounds: 900   accuracy: 97%   standardDeviation: 0.7
 ~~~
+
+# Weighted skill estimater
+
+Instead of giving or taking one point on a win or a loss, at the end of the game we adjust the number of points exchanged.
+If team A has a total estimated score of 20 and team B as a total estimated score of 39:
+ - if team A win, 2 points will be exchanged, thus team A will now be estimated as 30 while team B will be estimated at 29
+ - if team B win, only few points will be exchanged (as 0.05) to reinforce the current rank.
+
+While it seem nice, this method do not really improve the previous results, we stay at 91% at 50th round:
+~~~
+Test influence of round count with SkillBased-Weighted
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 1     accuracy: 58%   standardDeviation: 2.4
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 2     accuracy: 61%   standardDeviation: 2.3
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 5     accuracy: 68%   standardDeviation: 2.6
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 10    accuracy: 76%   standardDeviation: 1.6
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 15    accuracy: 80%   standardDeviation: 2.0
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 25    accuracy: 85%   standardDeviation: 1.3
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 50    accuracy: 91%   standardDeviation: 1.0
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 75    accuracy: 93%   standardDeviation: 1.1
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 100   accuracy: 94%   standardDeviation: 0.6
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 150   accuracy: 95%   standardDeviation: 0.8
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 200   accuracy: 96%   standardDeviation: 0.7
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 300   accuracy: 97%   standardDeviation: 0.6
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 500   accuracy: 98%   standardDeviation: 0.6
+SkillBased-Weighted     nbPlayers: 100  nbRounds: 900   accuracy: 98%   standardDeviation: 0.4
+~~~
+
+If we use the Weighted skill estimater with a random team maker, it's nonetheless better than a win count estimater. 
+50th round at 87% instead of 84% with winCount (and 91% with good team making).
+~~~
+Test influence of round count with Random-Weighted
+Random-Weighted nbPlayers: 100  nbRounds: 1     accuracy: 57%   standardDeviation: 2.1
+Random-Weighted nbPlayers: 100  nbRounds: 2     accuracy: 61%   standardDeviation: 2.7
+Random-Weighted nbPlayers: 100  nbRounds: 5     accuracy: 68%   standardDeviation: 2.2
+Random-Weighted nbPlayers: 100  nbRounds: 10    accuracy: 73%   standardDeviation: 3.0
+Random-Weighted nbPlayers: 100  nbRounds: 15    accuracy: 76%   standardDeviation: 2.1
+Random-Weighted nbPlayers: 100  nbRounds: 25    accuracy: 82%   standardDeviation: 1.7
+Random-Weighted nbPlayers: 100  nbRounds: 50    accuracy: 87%   standardDeviation: 1.5
+Random-Weighted nbPlayers: 100  nbRounds: 75    accuracy: 90%   standardDeviation: 1.0
+Random-Weighted nbPlayers: 100  nbRounds: 100   accuracy: 91%   standardDeviation: 1.0
+Random-Weighted nbPlayers: 100  nbRounds: 150   accuracy: 93%   standardDeviation: 1.1
+Random-Weighted nbPlayers: 100  nbRounds: 200   accuracy: 94%   standardDeviation: 1.1
+Random-Weighted nbPlayers: 100  nbRounds: 300   accuracy: 95%   standardDeviation: 0.8
+Random-Weighted nbPlayers: 100  nbRounds: 500   accuracy: 97%   standardDeviation: 0.6
+Random-Weighted nbPlayers: 100  nbRounds: 900   accuracy: 98%   standardDeviation: 0.6
+~~~
+

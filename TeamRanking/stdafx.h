@@ -27,6 +27,6 @@ using namespace std;
 
 #include "RandomMatchMaker.h"
 #include "WinCountSkillEstimater.h"
-
 #include "SkillBasedMatchMacker.h"
+#include "WeightedSkillEstimater.h"
 
