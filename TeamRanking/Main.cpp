@@ -10,7 +10,7 @@ void evaluateAlgos(IMatchMaker& matchMaker, ISkillEstimater& rankEstimer)
 		matchMaker.createGames(census, round);		
 		rankEstimer.adjustEstimatedSkillLevels(round);
 	}
-	float correctness = ScoreChecker().computePronostic(census);
+	float correctness = EstimationChecker().computePronostic(census);
 	cout << "Correctness: " << correctness << endl;
 }
 

@@ -23,7 +23,7 @@ using namespace std;
 
 #include "IMatchMaker.h"
 #include "ISkillEstimater.h"
-#include "ScoreChecker.h"
+#include "EstimationChecker.h"
 
 #include "RandomMatchMaker.h"
 #include "WinCountSkillEstimater.h"

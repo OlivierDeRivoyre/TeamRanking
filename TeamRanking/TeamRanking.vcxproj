@@ -150,7 +150,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SkillLevel.h" />
     <ClInclude Include="Round.h" />
-    <ClInclude Include="ScoreChecker.h" />
+    <ClInclude Include="EstimationChecker.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="RandomMatchMaker.h" />
     <ClInclude Include="WinCountSkillEstimater.h" />
@@ -166,7 +166,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SkillLevel.cpp" />
     <ClCompile Include="Round.cpp" />
-    <ClCompile Include="ScoreChecker.cpp" />
+    <ClCompile Include="EstimationChecker.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

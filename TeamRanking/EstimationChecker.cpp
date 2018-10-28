@@ -1,17 +1,17 @@
 #include "stdafx.h"
-#include "ScoreChecker.h"
+#include "EstimationChecker.h"
 
 
-ScoreChecker::ScoreChecker()
+EstimationChecker::EstimationChecker()
 {
 }
 
 
-ScoreChecker::~ScoreChecker()
+EstimationChecker::~EstimationChecker()
 {
 }
 
-float ScoreChecker::computePronostic(Census& census)
+float EstimationChecker::computePronostic(Census& census)
 {
 	int totalComparison = 0;
 	int correctCount = 0;
