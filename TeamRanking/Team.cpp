@@ -4,6 +4,7 @@
 
 Team::Team()
 {
+	_players.reserve(Team::TeamSize);
 }
 
 

@@ -4,6 +4,6 @@ class EstimationChecker
 public:
 	EstimationChecker();
 	~EstimationChecker();
-	float computePronostic(Census& census);
+	float computeAccuracy(Census& census);
 };
 

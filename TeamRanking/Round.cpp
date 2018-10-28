@@ -6,6 +6,7 @@ Round::Round(Census *census, int roundNumber)
 {
 	_census = census;
 	_roundNumber = roundNumber;
+	_games.reserve(census->getPlayerCount() / Game::GameSize);
 }
 
 
